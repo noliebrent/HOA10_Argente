@@ -1,0 +1,24 @@
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+  
+    - name: Install the Elasticsearch package
+      apt:
+        name: elasticsearch
+        state: present
+        update_cache: yes
+      notify:
+        - Start Elasticsearch
+        - Enable Elasticsearch
+
+  handlers:
+    - name: Start Elasticsearch
+      systemd:
+        name: elasticsearch
+        state: started
+
+    - name: Enable Elasticsearch
+      systemd:
+        name: elasticsearch
+        enabled: yes
