@@ -1,4 +1,5 @@
-[remote_server]
-
+[ubuntu]
 192.168.56.101
+
+[centos]
 192.168.56.110
